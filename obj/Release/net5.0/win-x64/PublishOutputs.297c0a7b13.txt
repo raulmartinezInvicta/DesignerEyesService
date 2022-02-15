@@ -1,0 +1,3 @@
+C:\Users\raulf\source\repos\DesignerEyesService\bin\Release\net5.0\publish\DesignerEyesService.pdb
+C:\Users\raulf\source\repos\DesignerEyesService\bin\Release\net5.0\publish\sni.dll
+C:\Users\raulf\source\repos\DesignerEyesService\bin\Release\net5.0\publish\DesignerEyesService.exe

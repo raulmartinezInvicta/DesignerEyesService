@@ -1,0 +1,20 @@
+2022-02-15 13:00:08.693 -06:00 [INF] Entre a la clase
+2022-02-15 13:00:08.752 -06:00 [INF] Log in Program.cs
+2022-02-15 13:05:18.711 -06:00 [INF] Creating directories
+2022-02-15 13:05:18.794 -06:00 [INF] Directories created successfully
+2022-02-15 13:05:18.794 -06:00 [INF] Deleting history
+2022-02-15 13:05:18.795 -06:00 [INF] History deleted successfully
+2022-02-15 13:05:18.796 -06:00 [INF] Log in Program.cs
+2022-02-15 13:10:55.334 -06:00 [INF] Creating directories
+2022-02-15 13:10:55.428 -06:00 [INF] Directories created successfully
+2022-02-15 13:10:55.429 -06:00 [INF] Deleting history
+2022-02-15 13:10:55.430 -06:00 [INF] History deleted successfully
+2022-02-15 13:10:55.447 -06:00 [INF] Entrance to lobby
+2022-02-15 13:11:00.463 -06:00 [INF] Selection: Exit
+2022-02-15 13:25:04.452 -06:00 [INF] Creating directories
+2022-02-15 13:25:04.509 -06:00 [INF] Directories created successfully
+2022-02-15 13:25:04.509 -06:00 [INF] Deleting history
+2022-02-15 13:25:04.510 -06:00 [INF] History deleted successfully
+2022-02-15 13:25:04.520 -06:00 [INF] Entrance to lobby
+2022-02-15 13:25:05.191 -06:00 [INF] Selection: Inventory
+2022-02-15 13:25:14.752 -06:00 [INF] Connecting with ftp service
