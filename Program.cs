@@ -25,7 +25,7 @@ namespace DesignerEyesService
 
             var logger = serviceProvider.GetService<ILogger<Program>>();
 
-            logger.LogInformation("Log in Program.cs");
+            logger.LogInformation("Completed process");
         }
 
         private static void ConfigureServices(IServiceCollection services)

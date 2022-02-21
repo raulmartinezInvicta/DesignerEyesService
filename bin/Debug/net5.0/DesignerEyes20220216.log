@@ -1,0 +1,25 @@
+2022-02-16 09:19:41.023 -06:00 [INF] Creating directories
+2022-02-16 09:19:41.087 -06:00 [INF] Directories created successfully
+2022-02-16 09:19:41.089 -06:00 [INF] Deleting history
+2022-02-16 09:19:41.090 -06:00 [INF] History deleted successfully
+2022-02-16 09:19:41.104 -06:00 [INF] Entrance to lobby
+2022-02-16 09:19:45.335 -06:00 [INF] Selection: Order
+2022-02-16 09:19:53.155 -06:00 [INF] Entrance to lobby
+2022-02-16 09:27:34.266 -06:00 [INF] Creating directories
+2022-02-16 09:27:34.316 -06:00 [INF] Directories created successfully
+2022-02-16 09:27:34.316 -06:00 [INF] Deleting history
+2022-02-16 09:27:34.318 -06:00 [INF] History deleted successfully
+2022-02-16 09:27:34.326 -06:00 [INF] Entrance to lobby
+2022-02-16 09:27:37.082 -06:00 [INF] Selection: Tracking
+2022-02-16 09:27:37.138 -06:00 [INF] Connecting with ftp service
+2022-02-16 09:27:37.819 -06:00 [INF] Connection to ftp service successful
+2022-02-16 09:27:38.562 -06:00 [INF] Obtained files
+2022-02-16 09:27:39.103 -06:00 [INF] DownloadFile:Tracking
+2022-02-16 09:28:04.895 -06:00 [ERR] System.NullReferenceException: Object reference not set to an instance of an object.
+   at DesignerEyesService.Services.ReadShipConfirm.ReadShipConfirmAsync(Int32 supplierId, String path) in C:\Users\raulf\source\repos\DesignerEyesService\Services\ReadShipConfirm.cs:line 132
+2022-02-16 09:28:05.567 -06:00 [INF] Entrance to lobby
+2022-02-16 09:30:40.007 -06:00 [INF] Selection: Tracking
+2022-02-16 09:30:40.013 -06:00 [INF] Connecting with ftp service
+2022-02-16 09:30:40.736 -06:00 [INF] Connection to ftp service successful
+2022-02-16 09:30:41.315 -06:00 [INF] Obtained files
+2022-02-16 09:30:41.432 -06:00 [INF] Entrance to lobby

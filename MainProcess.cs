@@ -78,118 +78,118 @@ namespace DesignerEyesService
         private async Task LobbyAction(string[] args)
         {
             Console.WriteLine("Select the option you want to implement");
-            //Console.WriteLine("Action  (-i → Inventory,  -o → Orders, -s → Shipping, -e → Exit )");
+            Console.WriteLine("Action  (-i → Inventory,  -o → Orders, -s → Shipping, -e → Exit )");
             _logger.LogInformation("Entrance to lobby");
-            //string option;
-            //option = Console.ReadLine();
-            _logger.LogInformation($"Action executed {args[0]}");
-            if (args.Length > 0 && args[0] == "-i")
-            {
-                Console.WriteLine("Processing inventory...");
-                try
-                {
-                    _logger.LogInformation("Selection: Inventory");
-                    await _ftp.GetFiles("Inventory");
-                    //LobbyAction(args);
-                }
-                catch (Exception e)
-                {
-                    _logger.LogError($"Exception: {e}");
-                    throw new Exception(e.Message);
-                }
-            }
-            else if (args.Length > 0 && args[0] == "-o")
-            {
-                Console.WriteLine("Processing order...");
-                try
-                {
-                    _logger.LogInformation("Selection: Order");
-                    _order.ReadOrdersData();
-                    //LobbyAction(args);
-                }
-                catch (Exception e)
-                {
-                    _logger.LogError($"Exception: {e}");
-                    throw new Exception(e.Message);
-                }
-            }
-            else if (args.Length > 0 && args[0] == "-s")
-            {
-                Console.WriteLine("Processing ShipConfirm...");
-                try
-                {
-                    _logger.LogInformation("Selection: Tracking");
-                    await _ftp.GetFiles("Tracking");
-                    //LobbyAction(args);
-                }
-                catch (Exception e)
-                {
-                    _logger.LogError($"Exception: {e}");
-                    throw new Exception(e.Message);
-                }
-            }
+            string option;
+            option = Console.ReadLine();
+            //_logger.LogInformation($"Action executed {args[0]}");
+            //if (args.Length > 0 && args[0] == "-i")
+            //{
+            //    Console.WriteLine("Processing inventory...");
+            //    try
+            //    {
+            //        _logger.LogInformation("Selection: Inventory");
+            //        await _ftp.GetFiles("Inventory");
+            //        //LobbyAction(args);
+            //    }
+            //    catch (Exception e)
+            //    {
+            //        _logger.LogError($"Exception: {e}");
+            //        throw new Exception(e.Message);
+            //    }
+            //}
+            //else if (args.Length > 0 && args[0] == "-o")
+            //{
+            //    Console.WriteLine("Processing order...");
+            //    try
+            //    {
+            //        _logger.LogInformation("Selection: Order");
+            //        _order.ReadOrdersData();
+            //        //LobbyAction(args);
+            //    }
+            //    catch (Exception e)
+            //    {
+            //        _logger.LogError($"Exception: {e}");
+            //        throw new Exception(e.Message);
+            //    }
+            //}
+            //else if (args.Length > 0 && args[0] == "-s")
+            //{
+            //    Console.WriteLine("Processing ShipConfirm...");
+            //    try
+            //    {
+            //        _logger.LogInformation("Selection: Tracking");
+            //        await _ftp.GetFiles("Tracking");
+            //        //LobbyAction(args);
+            //    }
+            //    catch (Exception e)
+            //    {
+            //        _logger.LogError($"Exception: {e}");
+            //        throw new Exception(e.Message);
+            //    }
+            //}
 
 
             //Manual execution
-            //switch (option)
-            //{
-            //    case "-i":
-            //        Console.WriteLine("Processing inventory...");
-            //        try
-            //        {
-            //            _logger.LogInformation("Selection: Inventory");
-            //            await _ftp.GetFiles("Inventory");
-            //            await LobbyAction(args);
-            //        }
-            //        catch (Exception e)
-            //        {
-            //            _logger.LogError($"Exception: {e}");
-            //            throw new Exception(e.Message);
-            //        }
+            switch (option)
+            {
+                case "-i":
+                    Console.WriteLine("Processing inventory...");
+                    try
+                    {
+                        _logger.LogInformation("Selection: Inventory");
+                        await _ftp.GetFiles("Inventory");
+                        await LobbyAction(args);
+                    }
+                    catch (Exception e)
+                    {
+                        _logger.LogError($"Exception: {e}");
+                        throw new Exception(e.Message);
+                    }
 
-            //        break;
+                    break;
 
-            //    case "-o":
-            //        Console.WriteLine("Processing order...");
-            //        try
-            //        {
-            //            _logger.LogInformation("Selection: Order");
-            //            _order.ReadOrdersData();
-            //            await LobbyAction(args);
-            //        }
-            //        catch (Exception e)
-            //        {
-            //            _logger.LogError($"Exception: {e}");
-            //            throw new Exception(e.Message);
-            //        }
-            //        break;
+                case "-o":
+                    Console.WriteLine("Processing order...");
+                    try
+                    {
+                        _logger.LogInformation("Selection: Order");
+                        _order.ReadOrdersData();
+                        await LobbyAction(args);
+                    }
+                    catch (Exception e)
+                    {
+                        _logger.LogError($"Exception: {e}");
+                        throw new Exception(e.Message);
+                    }
+                    break;
 
-            //    case "-s":
-            //        Console.WriteLine("Processing ShipConfirm...");
-            //        try
-            //        {
-            //            _logger.LogInformation("Selection: Tracking");
-            //            await _ftp.GetFiles("Out Trackings");
-            //            await LobbyAction(args);
-            //        }
-            //        catch (Exception e)
-            //        {
-            //            _logger.LogError($"Exception: {e}");
-            //            throw new Exception(e.Message);
-            //        }
-            //        break;
+                case "-s":
+                    Console.WriteLine("Processing ShipConfirm...");
+                    try
+                    {
+                        _logger.LogInformation("Selection: Tracking");
+                        await _ftp.GetFiles("Out Trackings");
+                        await LobbyAction(args);
+                    }
+                    catch (Exception e)
+                    {
+                        _logger.LogError($"Exception: {e}");
+                        throw new Exception(e.Message);
+                    }
+                    break;
 
-            //    case "-e":
-            //        _logger.LogInformation("Selection: Exit");
-            //        Environment.Exit(0);
-            //        break;
+                case "-e":
+                    _logger.LogInformation("Selection: Exit");
+                    Environment.Exit(0);
+                    break;
 
-            //    default:
-            //        Console.WriteLine("You must enter allowed values");
-            //        await LobbyAction(args);
-            //        break;
+                default:
+                    Console.WriteLine("You must enter allowed values");
+                    await LobbyAction(args);
+                    break;
 
-            //}
+            }
         }
     }
 }

@@ -37,69 +37,78 @@ namespace DesignerEyesService.Services
             _logger.LogDebug("Creating Order Object");
             _logger.LogDebug("Connecting with SQL SP DesignerEyes");
             var Connection = jsonParamModel.connectionString;
-            SqlConnection connection = new SqlConnection(Connection);
-            SqlDataAdapter da = new SqlDataAdapter();
-            DataSet ds = new DataSet();
-            SqlCommand command = new SqlCommand("dbo.Invicta_SP_Qry_DesignerEyes", connection);
-            command.CommandType = CommandType.StoredProcedure;
-            da = new SqlDataAdapter(command);
-            da.Fill(ds);
-            var dat = ds.Tables[0];
             List<Order> list = new List<Order>();
-            list = (from DataRow dr in dat.Rows
-                    select new Order()
-                    {
-                        ContactEmail = getString(dr, "ContactEmail"),
-                        EntryID = getString(dr, "EntryID"),
-                        FirstName = getString(dr, "FirstName"),
-                        LastName = getString(dr, "LastName"),
-                        ID = getString(dr, "ID"),
-                        isPendingForwarding = getString(dr, "isPendingForwarding"),
-                        City = getString(dr, "City"),
-                        ItemLookupCode = getString(dr, "ItemLookupCode"),
-                        OrderNumber = getString(dr, "OrderNumber"),
-                        Country = getString(dr, "Country"),
-                        PostCode = getString(dr, "PostCode"),
-                        QtyCancelled = getString(dr, "QtyCancelled"),
-                        QtyOrdered = getString(dr, "QtyOrdered"),
-                        QtyRefunded = getString(dr, "QtyRefunded"),
-                        QtyShipped = getString(dr, "QtyShipped"),
-                        RealQty = getString(dr, "RealQty"),
-                        Region = getString(dr, "Region"),
-                        RegionID = getString(dr, "RegionID"),
-                        SimpleProdLineNo = getString(dr, "SimpleProdLineNo"),
-                        Status = getString(dr, "Status"),
-                        Street = getString(dr, "Street"),
-                        Street2 = getString(dr, "Street2"),
-                        Telephone = getString(dr, "Telephone"),
-                        wasForwarded = getString(dr, "wasForwarded")
-                    }).ToList();
-            _logger.LogDebug("Connection with SQL DB succesful");
+            using (SqlConnection connection = new SqlConnection(Connection))
+            {
+                SqlDataAdapter da = new SqlDataAdapter();
+                DataSet ds = new DataSet();
+                SqlCommand command = new SqlCommand("dbo.Invicta_SP_Qry_DesignerEyes", connection);
+                command.CommandType = CommandType.StoredProcedure;
+                da = new SqlDataAdapter(command);
+                da.Fill(ds);
+                var dat = ds.Tables[0];
+                list = (from DataRow dr in dat.Rows
+                        select new Order()
+                        {
+                            ContactEmail = getString(dr, "ContactEmail"),
+                            EntryID = getString(dr, "EntryID"),
+                            FirstName = getString(dr, "FirstName"),
+                            LastName = getString(dr, "LastName"),
+                            ID = getString(dr, "ID"),
+                            isPendingForwarding = getString(dr, "isPendingForwarding"),
+                            City = getString(dr, "City"),
+                            ItemLookupCode = getString(dr, "ItemLookupCode"),
+                            OrderNumber = getString(dr, "OrderNumber"),
+                            Country = getString(dr, "Country"),
+                            PostCode = getString(dr, "PostCode"),
+                            QtyCancelled = getString(dr, "QtyCancelled"),
+                            QtyOrdered = getString(dr, "QtyOrdered"),
+                            QtyRefunded = getString(dr, "QtyRefunded"),
+                            QtyShipped = getString(dr, "QtyShipped"),
+                            RealQty = getString(dr, "RealQty"),
+                            Region = getString(dr, "Region"),
+                            RegionID = getString(dr, "RegionID"),
+                            SimpleProdLineNo = getString(dr, "SimpleProdLineNo"),
+                            Status = getString(dr, "Status"),
+                            Street = getString(dr, "Street"),
+                            Street2 = getString(dr, "Street2"),
+                            Telephone = getString(dr, "Telephone"),
+                            wasForwarded = getString(dr, "wasForwarded")
+                        }).ToList();
+                _logger.LogDebug("Connection with SQL DB succesful");
+            }
             var date = DateTime.Now;
 
-            foreach(Order o in list)
+            foreach (Order o in list)
             {
-                using (SqlCommand cmd = new SqlCommand())
+                using (SqlConnection connection = new SqlConnection(Connection))
                 {
-                    cmd.CommandType = CommandType.Text;
-                    cmd.CommandText = $"UPDATE [Merlin].[dbo].[eCommerceOrderEntry] SET wasForwarded= 1 where OrderNumber='{o.OrderNumber}' and ItemLookupCode LIKE '%DE-{o.ItemLookupCode}%'";
-                    cmd.Connection = connection;
-                    connection.Open();
-                    cmd.ExecuteNonQuery();
-                    connection.Close();
-                    _logger.LogDebug($"eCommerceOrderEntry order:{o.OrderNumber} item:{o.ItemLookupCode} already update ");
+                    using (SqlCommand cmd = new SqlCommand())
+                    {
+                        cmd.CommandType = CommandType.Text;
+                        cmd.CommandText = $"UPDATE [Merlin].[dbo].[eCommerceOrderEntry] SET wasForwarded= 1 where OrderNumber='{o.OrderNumber}' and ItemLookupCode LIKE '%DE-{o.ItemLookupCode}%'";
+                        cmd.Connection = connection;
+                        connection.Open();
+                        cmd.ExecuteNonQuery();
+                        connection.Close();
+                        _logger.LogDebug($"eCommerceOrderEntry order:{o.OrderNumber} item:{o.ItemLookupCode} already update ");
+                    }
                 }
 
-                using (SqlCommand cmd = new SqlCommand())
+                using (SqlConnection connection = new SqlConnection(Connection))
                 {
-                    cmd.CommandType = CommandType.Text;
-                    cmd.CommandText = $"UPDATE Merlin.dbo.eCommerceOrder SET isPendingForwarding= 0 where OrderNumber= '{o.OrderNumber}' and not exists (select '1' from Merlin.dbo.eCommerceOrderEntry where eCommerceOrderId = Merlin.dbo.eCommerceOrder.ID and wasForwarded = 0)";
-                    cmd.Connection = connection;
-                    connection.Open();
-                    cmd.ExecuteNonQuery();
-                    connection.Close();
-                    _logger.LogDebug($"eCommerceOrder order:{o.OrderNumber}  already update ");
+                    using (SqlCommand cmd = new SqlCommand())
+                    {
+                        cmd.CommandType = CommandType.Text;
+                        cmd.CommandText = $"UPDATE Merlin.dbo.eCommerceOrder SET isPendingForwarding= 0 where OrderNumber= '{o.OrderNumber}' and not exists (select '1' from Merlin.dbo.eCommerceOrderEntry where eCommerceOrderId = Merlin.dbo.eCommerceOrder.ID and wasForwarded = 0)";
+                        cmd.Connection = connection;
+                        connection.Open();
+                        cmd.ExecuteNonQuery();
+                        connection.Close();
+                        _logger.LogDebug($"eCommerceOrder order:{o.OrderNumber}  already update ");
+                    }
                 }
+                
             }
 
             _logger.LogDebug("ExcelFile created");
