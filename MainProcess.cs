@@ -95,7 +95,6 @@ namespace DesignerEyesService
             //    catch (Exception e)
             //    {
             //        _logger.LogError($"Exception: {e}");
-            //        throw new Exception(e.Message);
             //    }
             //}
             //else if (args.Length > 0 && args[0] == "-o")
@@ -110,7 +109,6 @@ namespace DesignerEyesService
             //    catch (Exception e)
             //    {
             //        _logger.LogError($"Exception: {e}");
-            //        throw new Exception(e.Message);
             //    }
             //}
             //else if (args.Length > 0 && args[0] == "-s")
@@ -119,13 +117,11 @@ namespace DesignerEyesService
             //    try
             //    {
             //        _logger.LogInformation("Selection: Tracking");
-            //        await _ftp.GetFiles("Tracking");
             //        //LobbyAction(args);
             //    }
             //    catch (Exception e)
             //    {
             //        _logger.LogError($"Exception: {e}");
-            //        throw new Exception(e.Message);
             //    }
             //}
 
